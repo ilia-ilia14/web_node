@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+<script>
+
+  function generateValues() {
+     var type = document.getElementById('postType').value;
+     console.log(type);
+     if(type === 'stamped') {
+         document.getElementById("weight").innerHTML = "";
+         // Build out message options
+         for(var i = 1; i<4; i++) {
+             var option = document.createElement('option');
+             option.setAttribute('value', i);
+             option.textContent = i;
+             weight.appendChild(option);
+             weight.insertBefore(option, weight.firstChild);
+         }
+         var option = document.createElement('option');
+         option.setAttribute('value', 3.5);
+         option.textContent = 3.5;
+         weight.appendChild(option);
+         weight.insertBefore(option, weight.firstChild);
+     }
+     if(type === 'metered') {
+         document.getElementById("weight").innerHTML = "";
+         // Build out message options
+         for(var i = 1; i<4; i++) {
+             var option = document.createElement('option');
+             option.setAttribute('value', i);
+             option.textContent = i;
+             weight.appendChild(option);
+             weight.insertBefore(option, weight.firstChild);
+         }
+         var option = document.createElement('option');
+         option.setAttribute('value', 3.5);
+         option.textContent = 3.5;
+         weight.appendChild(option);
+         weight.insertBefore(option, weight.firstChild);
+     }
+     if(type === 'flat') {
+         document.getElementById("weight").innerHTML = "";
+         // Build out message options
+         for(var i = 1; i<14; i++) {
+             var option = document.createElement('option');
+             option.setAttribute('value', i);
+             option.textContent = i;
+             weight.appendChild(option);
+             weight.insertBefore(option, weight.firstChild);
+         }
+     }
+     if(type === 'retail'){
+         document.getElementById("weight").innerHTML = "";
+         // Build out message options
+         for(var i = 1; i<14; i++) {
+             var option = document.createElement('option');
+             option.setAttribute('value', i);
+             option.textContent = i;
+             weight.appendChild(option);
+             weight.insertBefore(option, weight.firstChild);
+         }
+     }
+  }
+</script>
+<body>
+
+  <% include ../partials/nav.ejs %>
+
+<div class="jumbotron text-center">
+  <div class="container">
+    <a href="/" class="lang-logo">
+      <img src="/logo.png">
+    </a>
+    <h1>We will help you to calcularte your posting cost</h1>
+    <p>This is postal application that calculates your postage cost.</p>
+    <a type="button" class="btn btn-lg btn-default" href="#buttom"><span class="glyphicon glyphicon-envelope"></span> Postal Rate Calculator</a>
+    <a type="button" class="btn btn-lg btn-primary" href="#buttom"><span class="glyphicon glyphicon-map-marker"></span> Track my post</a>
+  </div>
+</div>
+<div class="container">
+  <div class="alert alert-info text-center" role="alert">
+    This assignment is for BYU-Idaho Cs313 web engineering II
+  </div>
+  <hr>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h3><span class="glyphicon glyphicon-tags"></span> Calculat Postal Cost</h3>
+
+
+
+
+
+    <div class="col-md-10">
+        <form action="/getrate">
+          <div class="form-group">
+            <label for="postType">Post Type:</label><br>
+            <select  name="postType" id="postType" onchange="if (this.selectedIndex) generateValues();" required>
+              <option value="">....</option>
+              <option value="stamped">Letters (Stamped)</option>
+              <option value="metered" >Letters (Metered)</option>
+              <option value="flat">Large Envelopes (Flats)e</option>
+              <option value="retail" >First-Class Package Service—Retail</option>
+              ⋮
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="weight">Weight Not Over (oz.):</label><br>
+            <select  name="weight" id="weight" >
+
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+    </div>
+    </div>
+    <div class="col-md-6">
+      <h3><span class="glyphicon glyphicon-map-marker"></span> Track My Post </h3>
+
+      <div class="col-md-10">
+        <form action="#">
+          <div class="form-group">
+            <label for="email">Tracking Number:</label>
+            <textarea class="form-control" placeholder="943553102563" required></textarea>
+          </div>
+          <button type="submit" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+
+
+    </div>
+  </div> <!-- row -->
+
+</div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Post Tracker</h4>
+        </div>
+        <div class="modal-body">
+          <p>You post is on it's way!!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- Modal content end-->
+
+  <br/><br/>
+
+  <footer id="buttom">
+    <div class="footer" id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <h4> Postage Calculator </h4>
+          </div>
+          <div class="col-lg-3 col-sm-2 col-xs-3">
+            <h3> Contact </h3>
+            <ul>
+              <li><a class="email"href="#"> insert email here </a></li>
+              <br/>
+              <li> <p> address line one </p> </li>
+              <li> <p> address line two </p> </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-sm-2 col-xs-3">
+            <ul>
+              <li> <h5> <a href="#" style="margin-top: 5em"> ABOUT US</a> </h5></li>
+              <li> <h5><a href="#"> CURRENT SERIES </a> </h5></li>
+              <li> <h5><a href="#"> THE HOUSE </a> </h5></li>
+              <li> <h5><a href="#"> LOOKING BACK </a> </h5></li>
+            </ul>
+          </div>
+
+          <!--/.row-->
+        </div>
+        <!--/.container-->
+      </div>
+      <!--/.footer-->
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="pull-left copyright"> Copyright © Footer 2014. All right reserved. </p>
+
+        </div>
+      </div>
+      <!--/.footer-bottom-->
+    </div>
+  </footer>
+
+
+</body>
+</html>
